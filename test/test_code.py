@@ -1,10 +1,32 @@
-import gettext
+import sys
+from PyQt5.QtCore import QUrl
+from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget
+from PyQt5.QtWebEngineWidgets import QWebEngineView
 
-# Load ngôn ngữ (file .mo)
-locale_path = './locales'  # Đường dẫn chứa file ngôn ngữ
-lang = gettext.translation('messages', localedir=locale_path, languages=['vi'])
-lang.install()
-trans = lang.gettext  # Sử dụng _() để dịch
+class MapWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Nhúng Bản Đồ vào PyQt5")
 
-# Sử dụng
-print(trans("Hello, World!"))  # Dịch câu "Hello, World!" sang tiếng Việt
+        # Tạo một QWebEngineView để hiển thị bản đồ
+        self.browser = QWebEngineView()
+
+        # Mở bản đồ Google Maps với URL đầy đủ
+        self.browser.setUrl(QUrl("https://www.google.com/maps/@21.028511,105.804817,15z"))
+
+        # Thiết lập layout cho cửa sổ chính
+        layout = QVBoxLayout()
+        layout.addWidget(self.browser)
+
+        # Thiết lập widget chính
+        container = QWidget()
+        container.setLayout(layout)
+        self.setCentralWidget(container)
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+
+    window = MapWindow()
+    window.show()
+
+    sys.exit(app.exec_())
