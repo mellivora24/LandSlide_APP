@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.11 (LandSlide_APP)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (LandSlide_APP)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (DESKTOP_APP)" project-jdk-type="Python SDK" />
 </project>
